@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Newsletter from "./components/Newsletter";
 import Index from "./pages/Index";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/roadmaps" element={<div>Roadmaps Coming Soon</div>} />
               <Route path="/resources" element={<div>Resources Coming Soon</div>} />
-              <Route path="/blog" element={<div>Blog Coming Soon</div>} />
+              <Route path="/blog" element={<Blog />} />
             </Routes>
           </main>
           <Newsletter />
