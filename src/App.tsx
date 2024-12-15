@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Newsletter from "./components/Newsletter";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
               <Route path="/blog" element={<div>Blog Coming Soon</div>} />
             </Routes>
           </main>
+          <Newsletter />
           <Footer />
         </div>
       </BrowserRouter>
