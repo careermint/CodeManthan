@@ -3,10 +3,21 @@ import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 import { Sun, Moon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
@@ -35,9 +46,10 @@ const Navbar = () => {
             variant="ghost"
             size="icon"
             onClick={() => {
-              setTheme(theme === "dark" ? "light" : "dark");
+              const newTheme = theme === "dark" ? "light" : "dark";
+              setTheme(newTheme);
               toast({
-                title: `Switched to ${theme === "dark" ? "light" : "dark"} mode`,
+                title: `Switched to ${newTheme} mode`,
                 duration: 1500,
               });
             }}
