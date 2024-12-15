@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Code, BookOpen, Brain, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
@@ -11,22 +13,26 @@ const Index = () => {
     {
       icon: <Code className="h-8 w-8" />,
       title: "Roadmaps to Learn Tech",
-      description: "Follow structured learning paths to master various technologies"
+      description: "Follow structured learning paths to master various technologies",
+      link: "/roadmap"
     },
     {
       icon: <BookOpen className="h-8 w-8" />,
       title: "Resources for Interview Prep",
-      description: "Comprehensive materials to ace your tech interviews"
+      description: "Comprehensive materials to ace your tech interviews",
+      link: "/resources"
     },
     {
       icon: <Brain className="h-8 w-8" />,
       title: "Latest Tech Blogs",
-      description: "Stay updated with the latest in technology"
+      description: "Stay updated with the latest in technology",
+      link: "/blog"
     },
     {
       icon: <MessageSquare className="h-8 w-8" />,
       title: "Interactive Learning",
-      description: "Learn through hands-on coding and real-world projects"
+      description: "Learn through hands-on coding and real-world projects",
+      link: "/languages"
     }
   ];
 
@@ -59,11 +65,11 @@ const Index = () => {
             Master programming languages, follow structured roadmaps, and prepare for your dream tech career with our comprehensive resources.
           </p>
           <div className="space-x-4 animate-fade-in">
-            <Button size="lg" className="hover-scale">
-              Get Started
+            <Button size="lg" className="hover-scale" asChild>
+              <Link to="/languages">Get Started</Link>
             </Button>
-            <Button size="lg" variant="outline" className="hover-scale">
-              Explore Roadmaps
+            <Button size="lg" variant="outline" className="hover-scale" asChild>
+              <Link to="/roadmap">Explore Roadmaps</Link>
             </Button>
           </div>
         </div>
@@ -77,17 +83,23 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div
+              <Link
+                to={feature.link}
                 key={index}
                 className="p-6 rounded-lg bg-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="mb-4 text-primary">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20">
+        <NewsletterForm />
       </section>
     </div>
   );
