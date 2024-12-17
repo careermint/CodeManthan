@@ -32,6 +32,17 @@ const App = () => (
                 <Route path="/roadmap" element={<Roadmap />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/blog" element={<Blog />} />
+                
+                {/* Language Routes */}
+                <Route path="/languages/:language" element={<RoadmapContentTemplate title="Language Content" />} />
+                
+                {/* Resource Routes */}
+                <Route path="/resources/:resource" element={<RoadmapContentTemplate title="Resource Content" />} />
+                
+                {/* Blog Routes */}
+                <Route path="/blog/:post" element={<RoadmapContentTemplate title="Blog Post" />} />
+                
+                {/* Roadmap Routes */}
                 {roadmapTiles.map((tile) => (
                   <Route
                     key={tile.path}

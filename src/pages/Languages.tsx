@@ -1,73 +1,66 @@
-import { Book } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const languages = [
   {
     name: "Python",
     description: "A versatile language known for its simplicity and readability",
-    docs: "https://docs.python.org/",
-    courses: "https://www.coursera.org/learn/python",
+    path: "/languages/python"
   },
   {
     name: "JavaScript",
     description: "The language of the web, essential for front-end development",
-    docs: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    courses: "https://www.udemy.com/course/javascript-the-complete-guide/",
+    path: "/languages/javascript"
   },
   {
     name: "Java",
     description: "Popular for enterprise software and Android development",
-    docs: "https://docs.oracle.com/en/java/",
-    courses: "https://www.codecademy.com/learn/learn-java",
+    path: "/languages/java"
   },
   {
     name: "C++",
     description: "Powerful language for system programming and game development",
-    docs: "https://en.cppreference.com/",
-    courses: "https://www.edx.org/learn/c-plus-plus",
+    path: "/languages/cpp"
   },
   {
     name: "Ruby",
     description: "Known for its elegant syntax and web framework Ruby on Rails",
-    docs: "https://ruby-doc.org/",
-    courses: "https://www.ruby-lang.org/en/documentation/",
+    path: "/languages/ruby"
   }
 ];
 
 const Languages = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center animate-fade-in">Popular Programming Languages</h1>
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-center mb-12 animate-fade-in">
+        Popular Programming Languages
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {languages.map((language, index) => (
-          <Card key={index} className="hover-scale">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Book className="h-5 w-5" />
-                {language.name}
-              </CardTitle>
-              <CardDescription>{language.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <a
-                  href={language.docs}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-primary hover:underline"
-                >
-                  Official Documentation
-                </a>
-                <a
-                  href={language.courses}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-primary hover:underline"
-                >
-                  Recommended Courses
-                </a>
-              </div>
-            </CardContent>
+          <Card
+            key={index}
+            className={`
+              p-6 cursor-pointer
+              bg-gradient-to-br from-purple-500/5 to-pink-500/5
+              hover:from-purple-500/10 hover:to-pink-500/10
+              border border-purple-500/20
+              transition-all duration-300
+              hover:scale-105 hover:shadow-lg
+              animate-fade-in
+            `}
+            style={{
+              animationDelay: `${index * 100}ms`
+            }}
+            onClick={() => navigate(language.path)}
+          >
+            <h3 className="text-lg font-semibold mb-2 text-primary">
+              {language.name}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {language.description}
+            </p>
           </Card>
         ))}
       </div>
