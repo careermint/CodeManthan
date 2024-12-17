@@ -20,7 +20,7 @@ const Logo = ({ className = "" }: { className?: string }) => {
       {/* Animated text with gradient */}
       <div className="relative">
         <span className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] via-[#D946EF] to-[#8B5CF6] bg-size-200 animate-gradient">
-          Codemanthan
+          CodeManthan
         </span>
         {/* Underline effect */}
         <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#D946EF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

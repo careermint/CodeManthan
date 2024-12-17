@@ -11,6 +11,7 @@ import Languages from "./pages/Languages";
 import Roadmap from "./pages/Roadmap";
 import Resources from "./pages/Resources";
 import Blog from "./pages/Blog";
+import NotFound from "./pages/NotFound";
 import RoadmapContentTemplate from "./components/RoadmapContentTemplate";
 import { roadmapTiles } from "./constants/roadmapData";
 
@@ -50,6 +51,9 @@ const App = () => (
                     element={<RoadmapContentTemplate title={tile.title} />}
                   />
                 ))}
+
+                {/* 404 Route */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />
