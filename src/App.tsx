@@ -11,6 +11,7 @@ import Languages from "./pages/Languages";
 import Roadmap from "./pages/Roadmap";
 import Resources from "./pages/Resources";
 import Blog from "./pages/Blog";
+import RoadmapContentTemplate from "./components/RoadmapContentTemplate";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,13 @@ const App = () => (
                 <Route path="/roadmap" element={<Roadmap />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/blog" element={<Blog />} />
+                {roadmapTiles.map((tile) => (
+                  <Route
+                    key={tile.path}
+                    path={tile.path}
+                    element={<RoadmapContentTemplate title={tile.title} />}
+                  />
+                ))}
               </Routes>
             </main>
             <Footer />
