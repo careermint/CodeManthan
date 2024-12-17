@@ -12,6 +12,7 @@ import Roadmap from "./pages/Roadmap";
 import Resources from "./pages/Resources";
 import Blog from "./pages/Blog";
 import RoadmapContentTemplate from "./components/RoadmapContentTemplate";
+import { roadmapTiles } from "./constants/roadmapData";
 
 const queryClient = new QueryClient();
 
