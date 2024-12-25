@@ -7,8 +7,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { roadmapTiles } from "./constants/roadmapData";
-import RoadmapContentTemplate from "./components/RoadmapContentTemplate";
 
 // Lazy load components
 const Index = lazy(() => import("./pages/Index"));
@@ -17,8 +15,11 @@ const Roadmap = lazy(() => import("./pages/Roadmap"));
 const Resources = lazy(() => import("./pages/Resources"));
 const Blog = lazy(() => import("./pages/Blog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Roadmap pages
 const FrontendDevelopment = lazy(() => import("./pages/roadmap/FrontendDevelopment"));
 const BackendDevelopment = lazy(() => import("./pages/roadmap/BackendDevelopment"));
+const MobileDevelopment = lazy(() => import("./pages/roadmap/MobileDevelopment"));
 
 // Loading component
 const LoadingSpinner = () => (
@@ -55,17 +56,26 @@ const App = () => (
                   <Route path="/blog" element={<Blog />} />
                   
                   {/* Language Routes */}
-                  <Route path="/languages/:language" element={<RoadmapContentTemplate title="Language Content" />} />
+                  <Route path="/languages/python" element={<RoadmapContentTemplate title="Python" />} />
+                  <Route path="/languages/javascript" element={<RoadmapContentTemplate title="JavaScript" />} />
+                  <Route path="/languages/java" element={<RoadmapContentTemplate title="Java" />} />
+                  <Route path="/languages/cpp" element={<RoadmapContentTemplate title="C++" />} />
+                  <Route path="/languages/ruby" element={<RoadmapContentTemplate title="Ruby" />} />
                   
                   {/* Resource Routes */}
-                  <Route path="/resources/:resource" element={<RoadmapContentTemplate title="Resource Content" />} />
+                  <Route path="/resources/leetcode" element={<RoadmapContentTemplate title="LeetCode" />} />
+                  <Route path="/resources/system-design" element={<RoadmapContentTemplate title="System Design" />} />
+                  <Route path="/resources/interview-prep" element={<RoadmapContentTemplate title="Interview Preparation" />} />
                   
                   {/* Blog Routes */}
-                  <Route path="/blog/:post" element={<RoadmapContentTemplate title="Blog Post" />} />
+                  <Route path="/blog/react-basics" element={<RoadmapContentTemplate title="Getting Started with React" />} />
+                  <Route path="/blog/typescript-guide" element={<RoadmapContentTemplate title="Understanding TypeScript" />} />
+                  <Route path="/blog/css-techniques" element={<RoadmapContentTemplate title="Modern CSS Techniques" />} />
                   
                   {/* Roadmap Routes */}
                   <Route path="/roadmap/frontend-development" element={<FrontendDevelopment />} />
                   <Route path="/roadmap/backend-development" element={<BackendDevelopment />} />
+                  <Route path="/roadmap/mobile-development" element={<MobileDevelopment />} />
 
                   {/* 404 Route */}
                   <Route path="*" element={<NotFound />} />
