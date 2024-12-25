@@ -16,7 +16,8 @@ const Roadmap = lazy(() => import("./pages/Roadmap"));
 const Resources = lazy(() => import("./pages/Resources"));
 const Blog = lazy(() => import("./pages/Blog"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const RoadmapContentTemplate = lazy(() => import("./components/RoadmapContentTemplate"));
+const FrontendDevelopment = lazy(() => import("./pages/roadmap/FrontendDevelopment"));
+const BackendDevelopment = lazy(() => import("./pages/roadmap/BackendDevelopment"));
 
 // Loading component
 const LoadingSpinner = () => (
@@ -29,7 +30,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5, // 5 minutes
-      cacheTime: 1000 * 60 * 30, // 30 minutes
+      gcTime: 1000 * 60 * 30, // 30 minutes
     },
   },
 });
@@ -62,13 +63,8 @@ const App = () => (
                   <Route path="/blog/:post" element={<RoadmapContentTemplate title="Blog Post" />} />
                   
                   {/* Roadmap Routes */}
-                  {roadmapTiles.map((tile) => (
-                    <Route
-                      key={tile.path}
-                      path={tile.path}
-                      element={<RoadmapContentTemplate title={tile.title} />}
-                    />
-                  ))}
+                  <Route path="/roadmap/frontend-development" element={<FrontendDevelopment />} />
+                  <Route path="/roadmap/backend-development" element={<BackendDevelopment />} />
 
                   {/* 404 Route */}
                   <Route path="*" element={<NotFound />} />
