@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import RoadmapContentTemplate from "./components/RoadmapContentTemplate";
 
 // Lazy load components
 const Index = lazy(() => import("./pages/Index"));
